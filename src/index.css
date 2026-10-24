@@ -1,0 +1,381 @@
+/* ═══════════════════════════════════════════════════════════════
+   MONAD PANTHEON — Global Styles
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Google Font Import (must come before @import "tailwindcss") ── */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Cinzel+Decorative:wght@700;900&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+@import "tailwindcss";
+
+/* ── Root Variables ────────────────────────────────────────── */
+:root {
+  --monad-bg: #e8d5b5;
+  --monad-purple: #836EF9;
+  --monad-gold: #F59E0B;
+  --monad-cyan: #06B6D4;
+  --monad-red: #EF4444;
+
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  line-height: 1.5;
+  color-scheme: light;
+}
+
+/* ── Base Reset ────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--monad-bg);
+  color: #49351d;
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Scrollbar Styling ─────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(120, 92, 40, 0.12);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(120, 92, 40, 0.48);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(120, 92, 40, 0.68);
+}
+
+/* ── Selection ─────────────────────────────────────────────── */
+::selection {
+  background-color: rgba(181, 138, 67, 0.3);
+  color: #49351d;
+}
+
+/* ── Animations ────────────────────────────────────────────── */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translateY(-20px) scale(1.2);
+    opacity: 0.6;
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(131, 110, 249, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(131, 110, 249, 0.4);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background-size: 200% 100%;
+  animation: shimmer 3s linear infinite;
+}
+
+@keyframes gold-sweep {
+  0% {
+    transform: translateX(-120%) skewX(-20deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.65;
+  }
+  60% {
+    opacity: 0.65;
+  }
+  100% {
+    transform: translateX(220%) skewX(-20deg);
+    opacity: 0;
+  }
+}
+
+.animate-gold-sweep {
+  position: relative;
+  overflow: hidden;
+}
+
+.animate-gold-sweep::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.08) 25%,
+    rgba(255, 245, 180, 0.6) 50%,
+    rgba(255, 255, 255, 0.08) 75%,
+    transparent 100%
+  );
+  animation: gold-sweep 3.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  pointer-events: none;
+}
+
+.font-cinzel {
+  font-family: 'Cinzel', 'Trajan Pro', Georgia, serif;
+}
+
+/* ── Code Block Styling ────────────────────────────────────── */
+pre {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+code {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* ── Focus Styles ──────────────────────────────────────────── */
+button:focus-visible {
+  outline: 2px solid var(--monad-purple);
+  outline-offset: 2px;
+}
+
+/* ── Canvas Crisp Rendering ────────────────────────────────── */
+canvas {
+  image-rendering: auto;
+}
+
+/* Sunlit limestone-and-bronze presentation for the lobby and arena UI. */
+.lobby-screen {
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(255, 248, 224, 0.92), transparent 55%),
+    linear-gradient(180deg, #d9c8a9 0%, #f2e6d1 46%, #c3ad89 100%) !important;
+  color: #49351d !important;
+}
+
+.lobby-screen .text-white,
+.lobby-screen .text-gray-200,
+.lobby-screen .text-gray-300,
+.lobby-screen .text-gray-400 {
+  color: #49351d !important;
+}
+
+.lobby-screen .text-gray-500,
+.lobby-screen .text-gray-600 {
+  color: #806744 !important;
+}
+
+.lobby-screen [class*="bg-white/5"],
+.lobby-screen [class*="bg-white/10"] {
+  background-color: rgba(255, 248, 233, 0.66) !important;
+}
+
+.lobby-screen [class*="border-white/10"],
+.lobby-screen [class*="border-white/20"] {
+  border-color: #bba580 !important;
+}
+
+.lobby-screen [class*="bg-gradient-to-r"] {
+  background: linear-gradient(135deg, #9a6c2c, #c69b50) !important;
+  color: #fff8e9 !important;
+}
+
+.lobby-screen [class*="bg-[#13102B]"] {
+  background: linear-gradient(160deg, #f5ead6, #dfceb1) !important;
+  border-color: #b58a43 !important;
+  color: #49351d !important;
+  box-shadow: 0 6px 0 #785c28, 0 12px 24px rgba(69, 47, 18, 0.18);
+}
+
+.lobby-screen input {
+  background: #fff9ed !important;
+  border-color: #bba580 !important;
+  color: #49351d !important;
+}
+
+.lobby-kicker {
+  background: rgba(181, 138, 67, 0.16) !important;
+  border-color: rgba(142, 100, 39, 0.4) !important;
+  color: #735322 !important;
+}
+
+.deity-card {
+  color: #49351d;
+  border-radius: 8px !important;
+  font-family: Georgia, 'Times New Roman', serif;
+}
+
+.game-arena-screen {
+  background:
+    radial-gradient(ellipse at 50% 0%, #fff8e9 0%, #e8d5b5 58%, #b9a585 100%) !important;
+  color: #49351d !important;
+}
+
+.arena-atmosphere > div {
+  background: radial-gradient(ellipse, rgba(255, 241, 204, 0.35), transparent 70%);
+}
+
+.arena-nav {
+  color: #705632 !important;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+.arena-feed {
+  background: linear-gradient(180deg, rgba(243, 234, 216, 0.96), rgba(220, 202, 176, 0.96)) !important;
+  border: 1px solid #b58a43 !important;
+  color: #49351d !important;
+  box-shadow: 0 4px 0 #785c28, 0 8px 18px rgba(0, 0, 0, 0.18);
+}
+
+.arena-feed .text-cyan-300,
+.arena-feed .text-gray-400 {
+  color: #705632 !important;
+}
+
+.arena-canvas-frame {
+  border: 5px solid #b58a43;
+  border-radius: 8px !important;
+  box-shadow: inset 0 0 0 2px #f4ead6;
+}
+
+.game-arena-screen button[class*="bg-white/10"] {
+  background: linear-gradient(145deg, #f3ead8, #cbb997) !important;
+  border: 1px solid #b58a43;
+  color: #49351d !important;
+  box-shadow: 0 3px 0 #785c28;
+}
+
+.game-arena-screen button[class*="bg-white/10"]:active {
+  background: #d2c0a3 !important;
+}
+
+#esports-hud .hud-score-row {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) 64px minmax(0, 1fr) minmax(0, 1fr);
+  gap: 6px;
+  height: 58px !important;
+}
+
+#esports-hud .hud-score-card:nth-child(1) { grid-column: 1; }
+#esports-hud .hud-score-card:nth-child(2) { grid-column: 2; }
+#esports-hud .hud-score-card:nth-child(3) { grid-column: 4; }
+#esports-hud .hud-score-card:nth-child(4) { grid-column: 5; }
+
+#esports-hud .hud-score-card {
+  padding: 4px 8px 5px !important;
+}
+
+#esports-hud .hud-score-content {
+  gap: 6px !important;
+}
+
+#esports-hud .hud-player-crest {
+  width: 28px !important;
+  height: 28px !important;
+  font-size: 14px !important;
+}
+
+#esports-hud .hud-score-name {
+  font-size: 8px !important;
+}
+
+#esports-hud .hud-score-percent {
+  font-size: 17px !important;
+}
+
+#esports-hud .hud-score-count {
+  font-size: 8px !important;
+}
+
+#esports-hud .hud-score-card > div:last-child {
+  height: 5px !important;
+  margin-top: 3px !important;
+}
+
+#esports-hud .hud-sundial-medallion,
+#esports-hud .hud-sundial-medallion svg {
+  width: 64px !important;
+  height: 64px !important;
+}
+
+#esports-hud .hud-sundial-medallion > div > div:first-child {
+  font-size: 13px !important;
+}
+
+@media (max-width: 700px) {
+  #esports-hud .hud-score-row {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) 68px minmax(0, 1fr) minmax(0, 1fr);
+    gap: 3px;
+  }
+
+  #esports-hud .hud-score-card {
+    padding: 5px 6px 6px !important;
+    border-radius: 6px !important;
+  }
+
+  #esports-hud .hud-player-crest {
+    width: 27px !important;
+    height: 27px !important;
+    font-size: 13px !important;
+  }
+
+  #esports-hud .hud-rank-medallion {
+    width: 13px !important;
+    height: 13px !important;
+    font-size: 7px !important;
+  }
+
+  #esports-hud .hud-score-content {
+    gap: 4px !important;
+  }
+
+  #esports-hud .hud-score-name {
+    font-size: 7px !important;
+    letter-spacing: 0.08em !important;
+  }
+
+  #esports-hud .hud-score-percent {
+    font-size: 15px !important;
+  }
+
+  #esports-hud .hud-score-count {
+    font-size: 7px !important;
+  }
+
+  #esports-hud .hud-sundial-medallion {
+    width: 68px !important;
+    height: 68px !important;
+  }
+
+  #esports-hud .hud-sundial-medallion svg {
+    width: 68px !important;
+    height: 68px !important;
+  }
+
+  #esports-hud .hud-sundial-medallion > div > div:first-child {
+    font-size: 12px !important;
+  }
+}
